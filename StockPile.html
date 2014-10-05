@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>StockPile</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+  </head>
+  <body>
+
+   <div class="container">
+       <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="center">
+                    <img src = 'StockPileLogo.png'>
+                </div>
+            </div>
+            
+        <form role="form">
+            <div class="col-md-6 col-md-offset-3">
+                <input type="text"  id="mySearchInput" class="form-control" placeholder="Enter ticker symbol or company name">
+                <center>
+                    <button type="submit" class="btn btn-default" id="tickerSearch">Search by Ticker Symbol</button>
+                    <!--<input type="button"  class="btn btn-default" value="Search by Ticker symbol"/>-->
+                    <button type="submit" class="btn btn-default" id="companySearch">Search by Company Name</button>
+                </center>
+                
+            </div>
+        </form>        
+
+            <div class="col-md-6">
+                <table class="table table-hover">
+                        <tr> 
+                            <th colspan="2" class="success"> Buy</th>
+                        </tr>
+                        <tr>
+                            <th>Wayside Technology Group (WSTG)</th>
+                            <th>Pembina Pipeline Corp (PBA)</th>
+                        </tr>
+                        
+                        <tr>
+                            <th>Sprague Resources LP (SRLP)</th>
+                            <th>Interphase Corp (INPH)</th>
+                        </tr>
+                        
+                        <tr>
+                            <th>Accelerate Diagnostics Inc (AXDX)</th>
+                            <th>Orthofix International N.V. (OFIX)</th>
+                        </tr>
+                        
+        
+                </table> 
+            </div>
+            
+            <div class="col-md-6">
+                <table class="table table-hover">
+                        <tr>
+                            <th colspan="2" class="danger"> Sell</th>
+                        </tr>
+                        
+                        <tr>
+                            <th>Alpha Natural Resources (ANR)</th>
+                            <th>Apollo Group (APOL)</th>
+                        </tr>
+                        
+                        <tr>
+                            <th>Chipotle Mexican Grill (CMG)</th>
+                            <th>Hewlett-Packard (HPQ)</th>
+                        </tr>
+                        
+                        <tr>
+                            <th>Exelon (EXC)</th>
+                            <th>Alcoa (AA)</th>
+                        </tr>
+        
+                </table> 
+            </div>
+            
+            
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <!--<script src = "TwitterJSClient-master/lib/Twitter.js"></script>-->
+         <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+                 
+                 <script>
+            $("#companySearch").click(function(e) {
+                e.preventDefault();
+                second(); 
+            });
+            
+            $("#tickerSearch").click(function(e) {
+                e.preventDefault();
+                name = name();
+                first(name);
+            });
+            
+            function name(){
+                
+                var key = $("#mySearchInput").val();
+                var mappings = {
+                    
+                    "WSTG": "Wayside Technology Group",
+                    "PBA": "Pembina Pipeline Corp",
+                    "SRLP": "Sprague Resources LP",
+                    "AXDX":"Accelerate Diagnostics Inc",
+                    "INPH": "Interphase Corp",
+                    "OFIX": "Orthofix International N.V.",
+                    "ANR": "Alpha Natural Resources",
+                    "CMG": "Chipotle Mexican Grill",
+                    "EXC": "Exelon",
+                    "APOL": "Apollo Group",
+                    "HPQ": "Hewlett-Packard",
+                    "AA": "Alcos",
+                    "MSFT": "Microsoft",
+                    "GOOG": "Google",
+                    "AAPL": "Apple",
+                    "FB":"Facebook",
+                    "XRX":"Xerox",
+                    "YHOO":"Yahoo",
+                    "WFM":"Whole Foods Market",
+                    "WFC":"Wells Fargo",
+                    "DIS":"Walt Disney",
+                    "WMT":"Wal-Mart",
+                    "V":"VISA",
+                    "VZ":"Verizon",
+                    "FOXA":"Twenty-first Century Fox",
+                    "HSY":"Hershey",
+                    "TXN":"Texas Instruments",
+                    "SBUX":"Starbucks",
+                    "SPLS":"Staples",
+                    "LUV":"Southwestern Airlines",
+                    "SWY":"Safeway",
+                    "PRU":"Prudential Finance",
+                    "RL":"Ralph Lauren",
+                    "PFE":"Pfizer",
+                    "PEP":"Pepsico",
+                    "ORCL":"Oracle",
+                    "NOP":"Northrup Grummon",
+                    "NKE":"NIKE",
+                    "MCD":"McDonald",
+                    "MAR":"Marriot",
+                    "M":"Macy",
+                    "KRFT":"Kraft",
+                    "GE":"General Electric",
+                    "KO":"CocaCola"
+                };
+                
+                return mappings[key];
+                
+            }
+            
+            function second(company) {
+                var value = $("#mySearchInput").val();
+                openlink("tweet.html?text=" + value);
+            }
+            
+            function first(name) {
+                
+                openlink("tweet.html?text=" + name);
+                
+            }
+            
+            function openlink(link){
+                console.log("opening",link);
+                location.href=link;
+            }
+        </script>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(function(){
+            
+            var twitter = new Twitter({
+                
+                "consumerKey": "{consumerKey}",
+                "consumerSecret": "{consumerSecret}",
+                "accessToken": "2272578080-FTO7ygUXVZQrukL1TWl7iaRaiXL1fwIydC8MxVy",
+                "accessTokenSecret": "xvbSqCU7yGHuKzOkFONDkovvHOvz3ppjXIsDmIfgZXkeM",
+                "callBackUrl": "{callBackUrl}"
+                
+            });
+            
+            
+            });
+            
+            function getStock(stock){
+                
+                var url = 'https://finance.google.com/finance/info?client=ig&q=' + stock;
+                
+                $.getJSON('https://whateverorigin.org/get?url=' + encodeURIComponent(url) + '&callback=?', function(data){
+                	console.log(data);
+                });
+            }
+    </script>
+  </body>
+</html> return mappings[value];
+                
+            }
+            
+            function second(company) {
+                var value = $("#mySearchInput").val();
+                console.log(value);
+                openlink("tweet.html?text=" + value);
+            }
+            
+            function first(name) {
+                
+                openlink("tweet.html?text=" + name);
+                
+            }
+            
+            function openlink(link){
+                console.log("opening",link);
+                location.href=link;
+            }
+        </script>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        $(function(){
+            
+            var twitter = new Twitter({
+                
+                "consumerKey": "{consumerKey}",
+                "consumerSecret": "{consumerSecret}",
+                "accessToken": "2272578080-FTO7ygUXVZQrukL1TWl7iaRaiXL1fwIydC8MxVy",
+                "accessTokenSecret": "xvbSqCU7yGHuKzOkFONDkovvHOvz3ppjXIsDmIfgZXkeM",
+                "callBackUrl": "{callBackUrl}"
+                
+            });
+            
+            
+            });
+            
+            function getStock(stock){
+                
+                var url = 'https://finance.google.com/finance/info?client=ig&q=' + stock;
+                
+                $.getJSON('https://whateverorigin.org/get?url=' + encodeURIComponent(url) + '&callback=?', function(data){
+                	console.log(data);
+                });
+            }
+    </script>
+  </body>
+</html>

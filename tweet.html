@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Results</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    
+  </head>
+  <body>
+    <script src = "algorithm.js"></script>
+
+    <div class="container">
+
+
+        <script>
+            $( document ).ready(function() {
+                num = document.URL.lastIndexOf("text");
+                name = document.URL.substring(num+5);
+
+                $("#cheese").text(name);
+
+                var mappings = {
+
+                        "Wayside Technology Group":"WSTG",
+                        "Pembina Pipeline Corp":"PBA",
+                        "Sprague Resources LP":"SRLP",
+                        "Accelerate Diagnostics Inc":"AXDX",
+                        "Interphase Corp":"INPH",
+                        "Orthofix International N.V.":"OFIX",
+                        "Alpha Natural Resources":"ANR",
+                        "Chipotle Mexican Grill":"CMG",
+                        "Exelon":"EXC",
+                        "Apollo Group":"APOL",
+                        "Hewlett-Packard":"HPQ",
+                        "Alcos":"AA",
+                        "Microsoft":"MSFT",
+                        "Google":"GOOG",
+                        "Apple":"AAPL",
+                        "Amazon":"AMZN",
+                        "Facebook":"FB",
+                    "Yahoo":"YHOO",
+                    "Wal-Mart":"WMT",
+                    "Verizon":"VZ",
+                    "Hershey":"HSY",
+                    "Starbucks":"SBUX",
+                    "Pfizer":"PFE",
+                    "Pepsico":"PEP",
+                    "ORCL":"Oracle",
+                    "NOP":"Northrup Grummon",
+                    "NKE":"NIKE",
+                    "MCD":"McDonald",
+                    "MAR":"Marriot",
+                    "M":"Macy",
+                    "KRFT":"Kraft",
+                    "GE":"General Electric",
+                    "KO":"CocaCola"
+                    };
+                
+                
+                $("#swiss").text('(' + mappings[name] + ')')
+                    
+                });
+
+        </script>
+
+        <div class="page-header">
+            <h1 id = "cheese"></h1>
+            <div style="float:right">
+                <a href="StockPile.html">
+                    <button type="button" class="btn btn-default">Home</button>
+                </a>
+                </div>
+            <h4 id = "swiss"></h4>
+                
+                
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h2> &nbsp; </h2>
+                            <h2>Favorites</h2>
+                            <h2>Mentions</h2>
+                            <h2>Retweets</h2>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <h3>Positive</h3>
+                            <h2><span class="label label-success" id="favorites-pos">1291</span></h2>
+                            <h2><span class="label label-success" id="mentions-pos">3143</span></h2>   
+                            <h2><span class="label label-success" id="retweeted-pos">1032 </span></h2>  
+                        </div>
+                        
+                        <div class="col-md-2"> 
+                            <h3>Neutral</h3>
+                            <h2><span class="label label-default" id="favorites-neutral">2193</span></h2>
+                            <h2><span class="label label-default" id="mentions-neutral">3204</span></h2>
+                            <h2><span class="label label-default" id="retweeted-neutral">152</span></h2>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <h3>Negative</h3>
+                            <h2><span class="label label-danger" id="favorites-neg">167</span></h2>
+                            <h2><span class="label label-danger" id="mentions-neg">100</span></h2>
+                            <h2><span class="label label-danger" id="retweeted-neg">302</span></h2>
+                        </div>
+                        
+                    </div>
+                    <br><br><br><br>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3>  Total Followers </h3>
+                            <h3>  Percent Followers Favorited </h3>
+                            <h3>  Percent Followers Mentioned </h3>
+                            <h3>  Percent Followers Retweeted </h3>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <h3><span class="label label-primary" id="followers">304920</span></h3>
+                            <h3><span class="label label-primary"><span id="percentFav">37</span>%</span></h3>
+                            <h3><span class="label label-primary"><span id="percentMentioned">5.7</span>%</span></h3>
+                            <h3><span class="label label-primary"><span id="percentRetweeted">1.3</span>%</span></h3>
+                            
+                        </div>
+                         
+                    </div>
+                
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="jumbotron">
+                         <img src="logo.png"/> 
+                            <center><h1 style="color:green"> &nbsp; <span id="rating">82</span></h1></center>
+                            <br></br>
+                            <center><h1 style="font-family: Arial; font-size: 58px; color:#4682B4">Percent Change</h1></center>
+                            <center><p style = "font-size: 58px; color:green"><strong>+<span id="percentChange">84</span>%</strong></p></center>
+                            <br></br>
+                            <center><h1 style="font-family: Arial; font-size: 58px; color:#4682B4">Correlation</h1></center>
+                            <center><p style = "font-size: 58px; color:green"><strong>+<span id="percentCorr">84</span>%</strong></p></center>
+
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script>
+        var thing = document.URL;
+         var myint = 0;
+         myint = thing.lastIndexOf("text");
+        //alert(thing.substring(myint+5));
+    </script>
+    
+  </body>
+</html>

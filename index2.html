@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <style>
+            .stock-price {
+                margin-left: 10px;
+            }
+            .hp2 .stock-price {
+                margin: 0;
+            }
+            .stock-price ul {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+            .stock-price ul li {
+                margin: 0 0 10px 0;
+            }
+            .stock-price span {
+                margin-right: 10px;
+            }
+            .stock-price .percent-change {
+                margin-right: 0;
+            }
+            .stock-price .minus {
+                color: #d14836;
+            }
+            .stock-price .plus {
+                color: #83bc21;
+            }
+        </style>
+        <script type="text/javascript" src="scripts/jquery-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <div class="stock-price">
+<ul>
+<li class="stock-goog">GOOG<br>
+<span class="curr-price"></span>
+<span class="diff"></span>
+<span class="plus minus">(<span class="percent-change">N/A</span>%)</span>
+</li>
+<li class="stock-msft">MSFT<br>
+<span class="curr-price"></span>
+<span class="diff"></span>
+<span class="plus minus">(<span class="percent-change">N/A</span>%)</span>
+</li>
+</ul>
+</div>
+        <script type="text/javascript">
+            // stock data //
+$(document).ready(function () {
+
+
+    // Stocks
+    hpgetStockData("GOOG", ".stock-goog .curr-price", "LastTradePriceOnly"); hpgetStockData("GOOG", ".stock-goog .diff", "Change"); hpgetStockData("GOOG", ".stock-goog .percent-change", "PercentChange");
+    hpgetStockData("MSFT", ".stock-msft .curr-price", "LastTradePriceOnly"); hpgetStockData("MSFT", ".stock-msft .diff", "Change"); hpgetStockData("MSFT", ".stock-msft .percent-change", "PercentChange");
+ 
+});
+
+
+function hpgetStockData(source, target, elemento) {
+    $.ajax({
+        type: "get",
+        cache: false,
+        dataType: "jsonp",
+        url: ("http://query.yahooapis.com/v1/public/yql?q=", encodeURIComponent('select * from yahoo.finance.historicaldata where symbol in ("' + source + '")') + "&env=http%3A%2F%2Fdatatables.org%2Falltables.env&format=json"), // with this URL works: https://www.google.com/finance/info?infotype=infoquoteall&q=" + source,
+      success: function (data) {
+            writeStockPrice(data, target, elemento);
+        }
+    });
+
+};
+
+function writeStockPrice(data, target, elemento) {
+    stockPrice = data[0][elemento];
+    var fullTarget = $('.stock-price').find(target);
+    var activity = stockPrice.split("")
+    $(fullTarget).html(stockPrice);
+    if (activity[0] === "-") {
+        $(fullTarget).addClass("minus").parent().removeClass("plus");
+    }
+    else if (activity[0] === "+") {
+        $(fullTarget).addClass("plus");
+    }
+};
+// stock data //
+        </script>
+    </body>
+</html>
